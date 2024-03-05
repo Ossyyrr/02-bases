@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 export class DbzService {
   constructor() {}
 
-  onNewCharacter(character: Character): void {
+  addCharacter(character: Character): void {
     console.log('Main Page Component');
     console.log(character);
     const newCharacter = {

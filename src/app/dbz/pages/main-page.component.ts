@@ -10,8 +10,20 @@ export class MainPageComponent {
   constructor(
     // forma corta de crear una clase,
     // se crea la propiedad dbzService,
-    public dbzService: DbzService // al ser publico de meja usarla en todo el servicio
+    private dbzService: DbzService // deben ser privados (buenas practicas)
   ) {}
+
+  get characters(): Character[] {
+    return [...this.dbzService.characters]; // Creo una copia del array para no modificar el original
+  }
+
+  public onDeleteCharacter(id: String): void {
+    this.dbzService.deleteCharacterById(id);
+  }
+
+  public onNewCharacter(character: Character): void {
+    this.dbzService.addCharacter(character);
+  }
 
   ngOnInit() {}
 }

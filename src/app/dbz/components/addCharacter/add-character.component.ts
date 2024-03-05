@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Character } from '../../interfaces/character.interface';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-add-character',
@@ -8,6 +9,7 @@ import { Character } from '../../interfaces/character.interface';
 })
 export class AddCharacterComponent {
   public Character: Character = {
+    id: uuid(),
     name: '',
     power: 0,
   };
@@ -21,6 +23,10 @@ export class AddCharacterComponent {
 
     this.onNewCharacterChild.emit({ ...this.Character });
 
-    this.Character = { name: '', power: 0 };
+    this.Character = {
+      id: uuid(),
+      name: '',
+      power: 0,
+    };
   }
 }
