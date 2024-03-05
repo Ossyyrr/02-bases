@@ -8,13 +8,19 @@ import { Character } from '../../interfaces/character.interface';
 })
 export class ListComponent {
   @Input() // Recibe del componente padre el valor de la propiedad characterList
-  public characterListChild: Character[] = [{ name: 'Vulma', power: 600 }];
+  public characterListChild: Character[] = [
+    {
+      id: '1',
+      name: 'Vulma',
+      power: 600,
+    },
+  ];
 
   @Output() // Envia el evento al padre
-  public onDeleteIdEventChild: EventEmitter<number> = new EventEmitter();
+  public onDeleteIdEventChild: EventEmitter<String> = new EventEmitter();
 
-  onDeleteCharacter(index: number): void {
-    console.log('Mandando evento onDeleteIdEventChild - ', index);
-    this.onDeleteIdEventChild.emit(index);
+  onDeleteCharacter(id: String): void {
+    console.log('Mandando evento onDeleteIdEventChild');
+    this.onDeleteIdEventChild.emit(id);
   }
 }
